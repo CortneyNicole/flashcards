@@ -21,18 +21,18 @@ def load_flashcards(filename, deck)
   @cards_array = questions.zip(answers)
   @cards_array.each do |card_question_answer|
     card = Card.new
-    card.card_question = card_question_answer[0]
-    card.card_answer = card_question_answer[1]
+    card.question = card_question_answer[0]
+    card.answer = card_question_answer[1]
     card.deck_id = deck.id
     card.save
   end
 end
 
 
-nighthawk_deck = Deck.create(name: "nigthawk", creator_id: User.first.id)
-otter_deck = Deck.create(name: "otter", creator_id: User.first.id)
-raccoon_deck = Deck.create(name: "raccoon", creator_id: User.first.id)
+nighthawk_deck = Deck.create(name: "nigthawk")
+otter_deck = Deck.create(name: "otter")
+raccoon_deck = Deck.create(name: "raccoon")
 
-load_flashcards("app/cards/nighthawk_deck.txt", nighthawk_deck)
-load_flashcards("app/cards/otter_deck.txt", otter_deck)
-load_flashcards("app/cards/raccoon_deck.txt", raccoon_deck)
+load_flashcards("cards/nighthawk_deck.txt", nighthawk_deck)
+load_flashcards("cards/otter_deck.txt", otter_deck)
+load_flashcards("cards/raccoon_deck.txt", raccoon_deck)
