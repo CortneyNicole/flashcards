@@ -1,0 +1,8 @@
+# build my decks index view
+
+<ul>
+  <% @decks.each do |deck| %>
+    <li><a href="/decks/<%=deck.id%>"> <%= deck.name %> </a></li>
+    <!-- <li>deck.whatever</li> -->
+  <% end %>
+</ul>
