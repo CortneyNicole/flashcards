@@ -5,3 +5,34 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+def load_flashcards(filename, deck)
+  questions = []
+  answers = []
+  File.open(filename) do |file|
+    file.each_line do |line|
+      if line.include?("?")
+        questions << line.chomp
+      else
+        answers << line.chomp unless line == "\n"
+      end
+    end
+  end
+  @cards_array = questions.zip(answers)
+  @cards_array.each do |card_question_answer|
+    card = Card.new
+    card.question = card_question_answer[0]
+    card.answer = card_question_answer[1]
+    card.deck_id = deck.id
+    card.save
+  end
+end
+
+
+nighthawk_deck = Deck.create(name: "nigthawk")
+otter_deck = Deck.create(name: "otter")
+raccoon_deck = Deck.create(name: "raccoon")
+
+load_flashcards("cards/nighthawk_deck.txt", nighthawk_deck)
+load_flashcards("cards/otter_deck.txt", otter_deck)
+load_flashcards("cards/raccoon_deck.txt", raccoon_deck)
