@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  get 'welcome/index'
-    resources :articles
-  root 'welcome#index'
+    root 'decks#index'
+    resources 'decks' do
+      resources 'rounds', only: 'create'
+    end
+
+    resources 'rounds' do
+      resources 'cards'
+    end
 end

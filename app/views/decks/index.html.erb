@@ -1,0 +1,9 @@
+# build my decks index view
+
+<ul>
+  <% @decks.each do |deck| %>
+    <li><%= link_to deck.name, deck %></li>
+    <!-- <li>deck.whatever</li> -->
+  <% end %>
+</ul>
+
