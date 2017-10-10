@@ -2,7 +2,8 @@
 
 <ul>
   <% @decks.each do |deck| %>
-    <li><a href="/decks/<%=deck.id%>"> <%= deck.name %> </a></li>
+    <li><%= link_to deck.name, deck %></li>
     <!-- <li>deck.whatever</li> -->
   <% end %>
 </ul>
+

@@ -2,4 +2,4 @@
 
 <h3> <%= @deck.description%> </h3>
 
-<a href="/cards/<%=@deck.cards.first.id%>">Play!</a>
+<%= button_to "Play!", deck_rounds_path(@deck)%>

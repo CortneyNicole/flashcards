@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
     root 'decks#index'
-
     resources 'decks' do
-      resources 'cards' do
-        resources 'rounds'
-      end
+      resources 'rounds', only: 'create'
+    end
+
+    resources 'rounds' do
+      resources 'cards'
     end
 end
